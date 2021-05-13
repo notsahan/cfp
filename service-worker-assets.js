@@ -9,10 +9,6 @@
       "url": ".nojekyll"
     },
     {
-      "hash": "sha256-Zuk5FBfP0yb50RLMiuUPiJa7spI\/W87RjjD3z6PT82U=",
-      "url": "404.html"
-    },
-    {
       "hash": "sha256-tKf90Kt7EW3ZB1X+XDkJJr2Yjv\/EEHNkRrYIQbRjB1U=",
       "url": "audio\/correct.mp3"
     },
@@ -557,5 +553,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "cuWNU1ha"
+  "version": "UtOy0rqP"
 };
