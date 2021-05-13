@@ -40,9 +40,11 @@ async function onFetch(event) {
         const shouldServeIndexHtml = event.request.mode === 'navigate';
 
         const request = shouldServeIndexHtml ? 'index.html' : event.request;
-        request.redirect = 'follow';
         const cache = await caches.open(cacheName);
         cachedResponse = await cache.match(request);
+        if (cachedResponse && cachedResponse.redirected) {
+            cachedResponse = false;
+        }
     }
 
     return cachedResponse || fetch(event.request);
