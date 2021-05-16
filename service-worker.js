@@ -27,14 +27,22 @@ async function onInstall(event) {
     for (s in self.assetsManifest.assets) {
         var url = self.assetsManifest.assets[s].url;
         console.info(url);
-        cache.add(url);
+        // cache.add(url);
+        cacheURL(url, cache);
     }
+
+
 
     // event.waitUntil(
     //     caches.open(PRECACHE)
     //         .then(cache => cache.addAll(PRECACHE_URLS))
     //         .then(self.skipWaiting())
     // );
+}
+
+async function cacheURL(url, cache) {
+    var response = await fetch(url, { redirect: "follow" })
+    cache.put(url, response.clone());
 }
 
 async function onActivate(event) {
@@ -71,7 +79,7 @@ async function onFetch(event) {
         }
 
 
-        var response = fetch(req)
+        var response = await fetch(req)
         // Put a copy of the response in the runtime cache.
         return cache.put(req.url, response.clone()).then(() => {
             return response;
