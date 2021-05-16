@@ -25,13 +25,14 @@ async function onInstall(event) {
         .map(asset => new Request(asset.url, { integrity: asset.hash, redirect: 'follow' }));
 
     che = await caches.open(cacheName);
-    che.addAll(PRECACHE_URLS);
+    // che.addAll(PRECACHE_URLS);
     che.addAll(assetsRequests);
 
-    var indexrequest = new Request('/index.html', { redirect: 'follow' });
+    var indexrequest = new Request('/index.html', { redirect: 'follow', cache: 'no-cache' });
     fetch(indexrequest).then(response => {
         // Put a copy of the response in the runtime cache.
-        await che.put(new Request('/'), response.clone());
+        che.put(new Request('/'), response.clone());
+        che.put(new Request('index.html'), response.clone());
     });
     // await caches.open(cacheName).then(cache => cache.addAll(assetsRequests));
 }
