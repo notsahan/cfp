@@ -189,6 +189,10 @@
       "url": "index.html"
     },
     {
+      "hash": "sha256-Om5D8dr\/l50qjWztzqkqxVLhb3riI+vRq+EHNAll9UY=",
+      "url": "indexmirror.html"
+    },
+    {
       "hash": "sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc=",
       "url": "Js\/bootstrap.min.js"
     },
@@ -553,5 +557,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "EPdO+NrX"
+  "version": "LyNnw3kJ"
 };

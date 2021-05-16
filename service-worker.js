@@ -15,6 +15,7 @@ const PRECACHE = 'precache-v-1.0.0.0';
 const RUNTIME = 'runtime';
 const PRECACHE_URLS = [
     'index.html',
+    'indexmirror.html',
     './'
 ];
 
@@ -31,7 +32,7 @@ async function onInstall(event) {
         cacheURL(url, cache);
     }
 
-
+    cache.addAll(PRECACHE_URLS);
 
     // event.waitUntil(
     //     caches.open(PRECACHE)
@@ -68,7 +69,7 @@ async function onFetch(event) {
 
         const shouldServeIndexHtml = event.request.mode === 'navigate';
         if (shouldServeIndexHtml) {
-            req = new Request(url = 'index.html');
+            req = new Request(url = 'indexmirror.html');
         }
 
         var cache = await caches.open(RUNTIME);
@@ -88,4 +89,4 @@ async function onFetch(event) {
 
     }
 }
-/* Manifest version: EPdO+NrX */
+/* Manifest version: LyNnw3kJ */
