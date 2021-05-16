@@ -445,7 +445,7 @@
       "url": "_framework\/System.IO.Pipelines.dll"
     },
     {
-      "hash": "sha256-oX7zqHEFU4nx3x0brr4MNcPL74aD1lVrT525bY4eQY0=",
+      "hash": "sha256-BXLtVeALCRAg0rj5xfxYhjrc2IKliCddYI\/npDQlbPg=",
       "url": "_framework\/Vidusaviya.Maps.dll"
     },
     {
@@ -545,7 +545,7 @@
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
-      "hash": "sha256-H2Ip+3CwJU413orhbCKigRlLPpCd78ZQK49B1TuXWoY=",
+      "hash": "sha256-vhZaTZED\/pvbFPA7MfDiplXUKR3TTV7Zcz5SEaNKihc=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -553,5 +553,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "UtOy0rqP"
+  "version": "EPdO+NrX"
 };

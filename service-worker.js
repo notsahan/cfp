@@ -22,11 +22,19 @@ const PRECACHE_URLS = [
 async function onInstall(event) {
     console.info('Service worker: Install');
 
-    event.waitUntil(
-        caches.open(PRECACHE)
-            .then(cache => cache.addAll(PRECACHE_URLS))
-            .then(self.skipWaiting())
-    );
+    var cache = await caches.open(RUNTIME);
+
+    for (s in self.assetsManifest.assets) {
+        var url = self.assetsManifest.assets[s].url;
+        console.info(url);
+        cache.add(url);
+    }
+
+    // event.waitUntil(
+    //     caches.open(PRECACHE)
+    //         .then(cache => cache.addAll(PRECACHE_URLS))
+    //         .then(self.skipWaiting())
+    // );
 }
 
 async function onActivate(event) {
@@ -46,23 +54,30 @@ async function onActivate(event) {
 
 async function onFetch(event) {
     // Skip cross-origin requests, like those for Google Analytics.
-    if (event.request.url.startsWith(self.location.origin)) {
-        event.respondWith(
-            caches.match(event.request).then(cachedResponse => {
-                if (cachedResponse) {
-                    return cachedResponse;
-                }
+    if (event.request.method === 'GET' && event.request.url.startsWith(self.location.origin)) {
 
-                return caches.open(RUNTIME).then(cache => {
-                    return fetch(event.request).then(response => {
-                        // Put a copy of the response in the runtime cache.
-                        return cache.put(event.request, response.clone()).then(() => {
-                            return response;
-                        });
-                    });
-                });
-            })
-        );
+        var req = event.request;
+
+        const shouldServeIndexHtml = event.request.mode === 'navigate';
+        if (shouldServeIndexHtml) {
+            req = new Request(url = 'index.html');
+        }
+
+        var cache = await caches.open(RUNTIME);
+
+        var cachedResponse = await cache.match(req.url, { ignoreVary: true });
+        if (cachedResponse) {
+            return cachedResponse;
+        }
+
+
+        var response = fetch(req)
+        // Put a copy of the response in the runtime cache.
+        return cache.put(req.url, response.clone()).then(() => {
+            return response;
+        });
+
+
     }
 }
-/* Manifest version: UtOy0rqP */
+/* Manifest version: EPdO+NrX */
