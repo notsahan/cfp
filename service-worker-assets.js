@@ -190,7 +190,7 @@
     },
     {
       "hash": "sha256-Om5D8dr\/l50qjWztzqkqxVLhb3riI+vRq+EHNAll9UY=",
-      "url": "indexmirror.html"
+      "url": "indexmirror.htm"
     },
     {
       "hash": "sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc=",
